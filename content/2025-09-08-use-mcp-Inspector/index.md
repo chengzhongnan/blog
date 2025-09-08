@@ -42,7 +42,7 @@ MCP Inspector 提供了一套丰富的功能模块，帮助开发者全面检查
 ```json
 "filesystem": {  
   "command": "npx",  
-  "args": \["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/files"\]  
+  "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/allowed/files"]  
 }
 ```
 
