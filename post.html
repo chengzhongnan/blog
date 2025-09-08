@@ -5,30 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>正在加载文章...</title>
 
+    <!-- KaTeX and Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- Highlight.js Style -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" xintegrity="sha384-n8MVd4RsNIU0KOVEMeaPoAbJjSxpTCgKQmbКТdTejTwTM4gtJsOc2BTdvr7qQJgK" crossorigin="anonymous">
-
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 </head>
 <body>
     <div class="sakura-petals"></div>
     <div class="container">
         <header class="post-header">
             <h1 id="post-title"></h1>
-            <!-- 新增：文章编号 -->
-            <p class="meta"><span id="post-number" class="post-number"></span><span id="post-meta"></span></p>
+            <div class="meta">
+                <span id="post-number" class="post-number"></span>
+                <p id="post-meta"></p>
+            </div>
             <img id="post-hero-image" src="" alt="">
         </header>
 
-        <main id="post-content" class="post-content"></main>
+        <main id="post-content" class="post-content">
+            <!-- Markdown content will be inserted here -->
+        </main>
 
-        <!-- 新增：前后文章导航 -->
-        <nav class="post-navigation">
+        <nav id="post-navigation" class="post-navigation">
             <div id="prev-post" class="nav-link prev"></div>
             <div id="next-post" class="nav-link next"></div>
         </nav>
@@ -38,15 +46,20 @@
         </footer>
     </div>
 
+    <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" xintegrity="sha384-XjKyOOlVjOTmhYWZtVvIhXecGUTT5MGEwv1calefhW4qlx8AsCROpTpIP5fvxbEV" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" xintegrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
-    
-    <!-- 重要：引入数据文件 -->
-    <script src="js/posts-data.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+    <script src="js/posts-data.js"></script>
     <script src="js/post.js" defer></script>
+
+    <!-- 【新增】图片灯箱/预览弹窗 -->
+    <div id="lightbox-overlay" class="lightbox-overlay">
+        <span id="lightbox-close" class="lightbox-close">&times;</span>
+        <img id="lightbox-image" class="lightbox-image" src="" alt="放大的图片">
+    </div>
+
 </body>
 </html>
 

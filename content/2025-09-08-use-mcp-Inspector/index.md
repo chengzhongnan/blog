@@ -10,6 +10,7 @@ heroImage: main.jpg
 
 MCP（Model Context Protocol）是一种客户端-服务器协议，为基于大型语言模型（LLM）的应用提供统一的上下文接口。它类似于 AI 应用的“USB-C”接口，使得 AI 主机可以标准化地接入各种数据源和工具[\[1\]](https://www.dailydoseofds.com/p/visual-guide-to-model-context-protocol-mcp/#:~:text=Intuitively%20speaking%2C%20MCP%20is%20like,port%20for%20your%20AI%20applications)。在 MCP 架构中，一个 AI 应用（MCP 主机）可以同时通过多个 MCP 客户端连接到不同的 MCP 服务器，各个客户端与服务器之间保持一对一的连接[\[2\]](https://modelcontextprotocol.io/docs/learn/architecture#:~:text=MCP%20follows%20a%20client,in%20the%20MCP%20architecture%20are)。MCP 服务器负责将数据、工具（Tools）或提示模板（Prompts）等上下文信息提供给客户端。
 
+![MCP 协议的客户端-服务器架构示意图](./content/2025-09-08-use-mcp-Inspector/mcp-server-client.png)
 图1：MCP 协议的客户端-服务器架构示意图。在这个架构中，AI 应用作为主机运行 MCP 客户端，与本地或远程的 MCP 服务器进行数据交互。
 
 在开发和调试 MCP 服务时，由于涉及多种传输协议（如本地进程的 STDIO、基于 HTTP 的 Streamable HTTP、Server-Sent Events 等）、异步的 JSON-RPC 消息交互，以及工具执行和实时输入等复杂功能，开发者常常面临调试困难[\[3\]](https://www.xugj520.cn/archives/mcp-server-test-tool.html#:~:text=%E5%9C%A8%E8%BF%99%E4%B8%AA%E6%95%B0%E5%AD%97%E5%8C%96%E9%A3%9E%E9%80%9F%E5%8F%91%E5%B1%95%E7%9A%84%E6%97%B6%E4%BB%A3%EF%BC%8C%E5%BC%80%E5%8F%91%E8%80%85%E4%BB%AC%E5%9C%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%B0%83%E8%AF%95%20MCP%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%97%B6%EF%BC%8C%E5%B8%B8%E5%B8%B8%E9%9D%A2%E4%B8%B4%E7%9D%80%E8%AF%B8%E5%A4%9A%E6%8C%91%E6%88%98%E3%80%82%E8%80%8C%20MCPJam%20Inspector,%E5%B0%B1%E5%A6%82%E5%90%8C%E4%B8%80%E6%9D%9F%E5%85%89%EF%BC%8C%E7%85%A7%E4%BA%AE%E4%BA%86%E5%BC%80%E5%8F%91%E8%80%85%E4%BB%AC%E7%9A%84%E5%89%8D%E8%A1%8C%E4%B9%8B%E8%B7%AF%EF%BC%8C%E6%88%90%E4%B8%BA%E4%BA%86%E4%BB%96%E4%BB%AC%E6%89%8B%E4%B8%AD%E7%9A%84%E4%B8%80%E6%8A%8A%E5%88%A9%E5%99%A8%E3%80%82%E4%BD%9C%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%8A%9F%E8%83%BD%E5%BC%BA%E5%A4%A7%E7%9A%84%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7%EF%BC%8C%E5%AE%83%E4%B8%8D%E4%BB%85%E8%AE%A9%20MCP%20%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%B5%8B%E8%AF%95%E5%92%8C%E8%B0%83%E8%AF%95%E5%8F%98%E5%BE%97%E6%9B%B4%E5%8A%A0%E8%BD%BB%E6%9D%BE%E5%BF%AB%E6%8D%B7%EF%BC%8C%E8%BF%98%E4%B8%BA%E5%BC%80%E5%8F%91%E8%80%85%E4%BB%AC%E6%8F%90%E4%BE%9B%E4%BA%86%E4%B8%B0%E5%AF%8C%E7%9A%84%E5%8A%9F%E8%83%BD%E5%92%8C%E4%BE%BF%E6%8D%B7%E7%9A%84%E6%93%8D%E4%BD%9C%E4%BD%93%E9%AA%8C%E3%80%82)。例如，更新 MCP 服务时需要重新启动应用、验证协议协商，以及逐步测试工具调用和错误处理等环节，都增加了调试的难度。因此需要一个专业的可视化调试工具来帮助开发者更直观、高效地发现和排查问题。
@@ -57,17 +58,19 @@ MCP Inspector 提供了一套丰富的功能模块，帮助开发者全面检查
 
 * 这个命令将启动 Inspector 的后台代理进程和文件系统 MCP 服务实例。Inspector 默认监听在本地 http://localhost:6274 端口，并在控制台显示用于认证的令牌（Session Token）（可通过设置 DANGEROUSLY\_OMIT\_AUTH=true 关闭认证）[\[17\]](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway-using-inspector.html#:~:text=Session%20token%3A%20c64b9e14995e9846572cb47c52eb198dd659c365e49a2cd8ce907b9ebb68aadd)。启动完成后，浏览器会自动打开 Inspector 的主界面。
 
-2. **配置连接**：图2：MCP Inspector 的连接界面示例（本地 STDIO 传输）。在打开的 Inspector 界面左侧“Server Connection Pane”区域，选择适当的传输方式并配置连接参数[\[13\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=Server%20connection%20pane)。例如对于本地 STDIO 传输：选择 **Transport Type：STDIO**，在 **Command** 栏中输入启动 MCP 服务的命令（示例中可以输入 npx @modelcontextprotocol/server-filesystem /path/to/your/files），然后点击 **Connect** 按钮。Inspector 会建立与服务器的连接并进行能力协商，此时右侧各功能页签将被激活。
+![MCP Inspector 主界面](./content/2025-09-08-use-mcp-Inspector/mcp-inspector.png)
 
-3. **使用各功能页签调试**：连接成功后，可依次使用不同页签测试 MCP 服务功能：
+1. **配置连接**：图2：MCP Inspector 的连接界面示例（本地 STDIO 传输）。在打开的 Inspector 界面左侧“Server Connection Pane”区域，选择适当的传输方式并配置连接参数[\[13\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=Server%20connection%20pane)。例如对于本地 STDIO 传输：选择 **Transport Type：STDIO**，在 **Command** 栏中输入启动 MCP 服务的命令（示例中可以输入 npx @modelcontextprotocol/server-filesystem /path/to/your/files），然后点击 **Connect** 按钮。Inspector 会建立与服务器的连接并进行能力协商，此时右侧各功能页签将被激活。
 
-4. **资源（Resources）**：查看服务器提供的所有资源项及其内容，验证资源是否正确列出并返回预期数据[\[9\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=,Supports%20subscription%20testing)。
+2. **使用各功能页签调试**：连接成功后，可依次使用不同页签测试 MCP 服务功能：
 
-5. **提示词（Prompts）**：在“Prompts”页签里查看可用的提示模板，为模板输入参数测试对话生成过程[\[10\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=,Previews%20generated%20messages)。
+3. **资源（Resources）**：查看服务器提供的所有资源项及其内容，验证资源是否正确列出并返回预期数据[\[9\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=,Supports%20subscription%20testing)。
 
-6. **工具（Tools）**：在“Tools”页签中选择要调用的工具，为其填写输入参数并执行，Inspector 会显示工具运行后返回的结果[\[11\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=Tools%20tab)。
+4. **提示词（Prompts）**：在“Prompts”页签里查看可用的提示模板，为模板输入参数测试对话生成过程[\[10\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=,Previews%20generated%20messages)。
 
-7. **通知（Notifications）**：切换到“Notifications”页签，可以看到服务器打印的调试日志和任何错误消息，用于跟踪服务器运行状态[\[12\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=Notifications%20pane)。
+5. **工具（Tools）**：在“Tools”页签中选择要调用的工具，为其填写输入参数并执行，Inspector 会显示工具运行后返回的结果[\[11\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=Tools%20tab)。
+
+6. **通知（Notifications）**：切换到“Notifications”页签，可以看到服务器打印的调试日志和任何错误消息，用于跟踪服务器运行状态[\[12\]](https://modelcontextprotocol.io/legacy/tools/inspector#:~:text=Notifications%20pane)。
 
 通过以上步骤，可以在可视化界面中即时检查 MCP 服务的行为并验证数据交互是否正确。如果需要调试远程部署的 MCP 服务，则在连接配置中选择 **Streamable HTTP**（或 SSE）传输，填入远程服务的 MCP 端点 URL 和授权 Header（如 Authorization: Bearer \<token\>）[\[18\]](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/gateway-using-inspector.html#:~:text=,HTTP)。连接后，Inspector 同样可以列出远程服务提供的工具和资源，支持相同的交互测试方式。图3展示了通过 Streamable HTTP 协议连接到远程 MCP 服务后的 Inspector 界面示例。
 
