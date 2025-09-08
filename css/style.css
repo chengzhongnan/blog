@@ -80,10 +80,6 @@ body {
     color: #64748b;
 }
 
-main#post-list {
-    margin-top: 10px;
-}
-
 /* --- 文章卡片样式 --- */
 .post-card {
     display: block;
@@ -252,7 +248,6 @@ main#post-list {
     color: #334155;
 }
 
-/* --- 新增：文章编号和导航样式 --- */
 .post-header .meta {
     display: flex;
     justify-content: center;
@@ -313,5 +308,54 @@ main#post-list {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* --- 新增：可折叠参考文献样式 --- */
+.references-collapsible {
+    margin-top: 2.5rem;
+    border-top: 1px solid #FBCFE8;
+}
+
+.references-toggle {
+    background: none;
+    border: none;
+    padding: 1.5rem 0 1rem 0;
+    width: 100%;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #583749;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.references-toggle .arrow {
+    width: 1.2em;
+    height: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.references-collapsible.is-open .references-toggle .arrow {
+    transform: rotate(90deg);
+}
+
+.references-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.references-collapsible.is-open .references-panel {
+    max-height: 2000px; /* 设定一个足够大的值 */
+    transition: max-height 0.6s ease-in;
+}
+
+/* 调整参考文献列表的样式 */
+.references-panel h2,
+.references-panel p > strong {
+    display: none; /* 隐藏原始的标题，因为按钮已作为标题 */
 }
 

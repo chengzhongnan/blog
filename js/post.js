@@ -33,12 +33,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const formatDate = (dateStr) => {
             if (!dateStr) return '';
             const date = new Date(dateStr);
-            // 检查日期是否有效
             if (isNaN(date.getTime())) {
-                return dateStr; // 如果日期无效，返回原始字符串
+                return dateStr;
             }
             const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始，所以+1
+            const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
             return `${year}-${month}-${day}`;
         }
@@ -67,6 +66,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             throwOnError: false
         });
 
+        // 【新增】初始化可折叠的参考文献功能
+        initializeReferenceToggler();
+
         // 渲染前后文章导航
         const prevPostEl = document.getElementById('prev-post');
         const nextPostEl = document.getElementById('next-post');
@@ -83,6 +85,59 @@ document.addEventListener('DOMContentLoaded', async () => {
         postContentEl.innerHTML = `<p>抱歉，加载文章时遇到问题。</p>`;
     }
 });
+
+
+/**
+ * 【新增】初始化可折叠的参考文献功能
+ * 在文章末尾查找参考文献部分，并将其转换为可折叠的组件。
+ */
+function initializeReferenceToggler() {
+    const contentEl = document.getElementById('post-content');
+    if (!contentEl) return;
+
+    // 查找标记参考文献开始的元素 (可以是 h2, h3, 或 p>strong)
+    const markerEl = Array.from(contentEl.querySelectorAll('h2, h3, p > strong'))
+        .find(el => el.textContent.trim().startsWith('参考文献'));
+        
+    if (!markerEl) return;
+
+    const referenceStartNode = (markerEl.tagName === 'STRONG') ? markerEl.parentElement : markerEl;
+
+    const container = document.createElement('div');
+    container.className = 'references-collapsible';
+
+    const toggle = document.createElement('button');
+    toggle.className = 'references-toggle';
+    toggle.innerHTML = `<span>显示参考文献</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>`;
+
+    const panel = document.createElement('div');
+    panel.className = 'references-panel';
+
+    const elementsToMove = [];
+    let currentNode = referenceStartNode;
+    while (currentNode) {
+        elementsToMove.push(currentNode);
+        currentNode = currentNode.nextElementSibling;
+    }
+    
+    elementsToMove.forEach(el => panel.appendChild(el));
+    
+    container.appendChild(toggle);
+    container.appendChild(panel);
+    
+    contentEl.appendChild(container);
+
+    toggle.addEventListener('click', () => {
+        container.classList.toggle('is-open');
+        const buttonText = toggle.querySelector('span');
+        if (container.classList.contains('is-open')) {
+            buttonText.textContent = '隐藏参考文献';
+        } else {
+            buttonText.textContent = '显示参考文献';
+        }
+    });
+}
+
 
 // --- 樱花飘落特效 (保持不变) ---
 function createSakuraPetals() {
@@ -103,3 +158,4 @@ function createSakuraPetals() {
     }
 }
 createSakuraPetals();
+

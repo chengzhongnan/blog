@@ -2,6 +2,19 @@
 // 该文件由 build.js 自动生成，请勿手动修改！
 const allPosts = [
     {
+        "title": "使用MCP Inspector可视化调试MCP服务",
+        "date": "2025-09-08 10:00:00",
+        "heroImage": "content/2025-09-08-use-mcp-Inspector/main.jpg",
+        "excerpt": "使用 MCP Inspector 可视化调试 MCP 服务\r背景简介\rMCP（Model Context Protocol）是一种客户端-服务器协议，为基于大型语言模型（LLM）的应用提供统一的上下文接口。它类似于 AI 应用的“USB-C...",
+        "slug": "2025-09-08-use-mcp-Inspector",
+        "number": 2,
+        "previous": {
+            "title": "我的第一篇文章",
+            "slug": "2025-09-07-my-first-post"
+        },
+        "next": null
+    },
+    {
         "title": "我的第一篇文章",
         "date": "2025-09-07 00:00:05",
         "heroImage": "content/2025-09-07-my-first-post/main.jpg",
@@ -9,11 +22,27 @@ const allPosts = [
         "slug": "2025-09-07-my-first-post",
         "number": 1,
         "previous": null,
-        "next": null
+        "next": {
+            "title": "使用MCP Inspector可视化调试MCP服务",
+            "slug": "2025-09-08-use-mcp-Inspector"
+        }
     }
 ];
 const paginatedPosts = [
     [
+        {
+            "title": "使用MCP Inspector可视化调试MCP服务",
+            "date": "2025-09-08 10:00:00",
+            "heroImage": "content/2025-09-08-use-mcp-Inspector/main.jpg",
+            "excerpt": "使用 MCP Inspector 可视化调试 MCP 服务\r背景简介\rMCP（Model Context Protocol）是一种客户端-服务器协议，为基于大型语言模型（LLM）的应用提供统一的上下文接口。它类似于 AI 应用的“USB-C...",
+            "slug": "2025-09-08-use-mcp-Inspector",
+            "number": 2,
+            "previous": {
+                "title": "我的第一篇文章",
+                "slug": "2025-09-07-my-first-post"
+            },
+            "next": null
+        },
         {
             "title": "我的第一篇文章",
             "date": "2025-09-07 00:00:05",
@@ -22,7 +51,10 @@ const paginatedPosts = [
             "slug": "2025-09-07-my-first-post",
             "number": 1,
             "previous": null,
-            "next": null
+            "next": {
+                "title": "使用MCP Inspector可视化调试MCP服务",
+                "slug": "2025-09-08-use-mcp-Inspector"
+            }
         }
     ]
 ];
