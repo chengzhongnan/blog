@@ -2,6 +2,19 @@
 // 该文件由 build.js 自动生成，请勿手动修改！
 const allPosts = [
     {
+        "title": "使用DeepWiki一键生成任何代码库的AI文档",
+        "date": "2025-09-09 12:00:00",
+        "heroImage": "content/2025-09-09-deepwiki/main.jpg",
+        "excerpt": "使用DeepWiki一键生成任何代码库的AI文档",
+        "slug": "2025-09-09-deepwiki",
+        "number": 3,
+        "previous": {
+            "title": "使用MCP Inspector可视化调试MCP服务",
+            "slug": "2025-09-08-use-mcp-Inspector"
+        },
+        "next": null
+    },
+    {
         "title": "使用MCP Inspector可视化调试MCP服务",
         "date": "2025-09-08 10:00:00",
         "heroImage": "content/2025-09-08-use-mcp-Inspector/main.jpg",
@@ -12,7 +25,10 @@ const allPosts = [
             "title": "我的第一篇文章",
             "slug": "2025-09-07-my-first-post"
         },
-        "next": null
+        "next": {
+            "title": "使用DeepWiki一键生成任何代码库的AI文档",
+            "slug": "2025-09-09-deepwiki"
+        }
     },
     {
         "title": "我的第一篇文章",
@@ -31,6 +47,19 @@ const allPosts = [
 const paginatedPosts = [
     [
         {
+            "title": "使用DeepWiki一键生成任何代码库的AI文档",
+            "date": "2025-09-09 12:00:00",
+            "heroImage": "content/2025-09-09-deepwiki/main.jpg",
+            "excerpt": "使用DeepWiki一键生成任何代码库的AI文档",
+            "slug": "2025-09-09-deepwiki",
+            "number": 3,
+            "previous": {
+                "title": "使用MCP Inspector可视化调试MCP服务",
+                "slug": "2025-09-08-use-mcp-Inspector"
+            },
+            "next": null
+        },
+        {
             "title": "使用MCP Inspector可视化调试MCP服务",
             "date": "2025-09-08 10:00:00",
             "heroImage": "content/2025-09-08-use-mcp-Inspector/main.jpg",
@@ -41,7 +70,10 @@ const paginatedPosts = [
                 "title": "我的第一篇文章",
                 "slug": "2025-09-07-my-first-post"
             },
-            "next": null
+            "next": {
+                "title": "使用DeepWiki一键生成任何代码库的AI文档",
+                "slug": "2025-09-09-deepwiki"
+            }
         },
         {
             "title": "我的第一篇文章",

@@ -122,7 +122,7 @@ function initializeReferenceToggler() {
     container.className = 'references-collapsible';
     const toggle = document.createElement('button');
     toggle.className = 'references-toggle';
-    toggle.innerHTML = `<span>显示参考文献</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>`;
+    toggle.innerHTML = `<span>参考文献</span><svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg>`;
     const panel = document.createElement('div');
     panel.className = 'references-panel';
     const elementsToMove = [];
@@ -139,9 +139,9 @@ function initializeReferenceToggler() {
         container.classList.toggle('is-open');
         const buttonText = toggle.querySelector('span');
         if (container.classList.contains('is-open')) {
-            buttonText.textContent = '隐藏参考文献';
+            buttonText.textContent = '参考文献';
         } else {
-            buttonText.textContent = '显示参考文献';
+            buttonText.textContent = '参考文献';
         }
     });
 }
