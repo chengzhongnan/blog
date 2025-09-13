@@ -2,6 +2,19 @@
 // 该文件由 build.js 自动生成，请勿手动修改！
 const allPosts = [
     {
+        "title": "全面植物病害识别与诊断报告",
+        "date": "2025-09-13 12:00:00",
+        "heroImage": "content/2025-09-13-temp/main.jpg",
+        "excerpt": "全面植物病害识别与诊断报告\r1. 植物病害与诊断简介\r1.1. 定义植物病害：病害三角的基础概念\r[citestart]植物病害被定义为任何对植物外观或功能产生负面影响的有害状况 [cite: 4][citestart]。这些状况可能源于两...",
+        "slug": "2025-09-13-temp",
+        "number": 4,
+        "previous": {
+            "title": "使用DeepWiki一键生成任何代码库的AI文档",
+            "slug": "2025-09-09-deepwiki"
+        },
+        "next": null
+    },
+    {
         "title": "使用DeepWiki一键生成任何代码库的AI文档",
         "date": "2025-09-09 12:00:00",
         "heroImage": "content/2025-09-09-deepwiki/main.jpg",
@@ -12,7 +25,10 @@ const allPosts = [
             "title": "使用MCP Inspector可视化调试MCP服务",
             "slug": "2025-09-08-use-mcp-Inspector"
         },
-        "next": null
+        "next": {
+            "title": "全面植物病害识别与诊断报告",
+            "slug": "2025-09-13-temp"
+        }
     },
     {
         "title": "使用MCP Inspector可视化调试MCP服务",
@@ -47,6 +63,19 @@ const allPosts = [
 const paginatedPosts = [
     [
         {
+            "title": "全面植物病害识别与诊断报告",
+            "date": "2025-09-13 12:00:00",
+            "heroImage": "content/2025-09-13-temp/main.jpg",
+            "excerpt": "全面植物病害识别与诊断报告\r1. 植物病害与诊断简介\r1.1. 定义植物病害：病害三角的基础概念\r[citestart]植物病害被定义为任何对植物外观或功能产生负面影响的有害状况 [cite: 4][citestart]。这些状况可能源于两...",
+            "slug": "2025-09-13-temp",
+            "number": 4,
+            "previous": {
+                "title": "使用DeepWiki一键生成任何代码库的AI文档",
+                "slug": "2025-09-09-deepwiki"
+            },
+            "next": null
+        },
+        {
             "title": "使用DeepWiki一键生成任何代码库的AI文档",
             "date": "2025-09-09 12:00:00",
             "heroImage": "content/2025-09-09-deepwiki/main.jpg",
@@ -57,7 +86,10 @@ const paginatedPosts = [
                 "title": "使用MCP Inspector可视化调试MCP服务",
                 "slug": "2025-09-08-use-mcp-Inspector"
             },
-            "next": null
+            "next": {
+                "title": "全面植物病害识别与诊断报告",
+                "slug": "2025-09-13-temp"
+            }
         },
         {
             "title": "使用MCP Inspector可视化调试MCP服务",
