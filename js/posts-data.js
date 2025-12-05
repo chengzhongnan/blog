@@ -2,17 +2,33 @@
 // 该文件由 build.js 自动生成，请勿手动修改！
 const allPosts = [
     {
+        "title": "椭圆曲线的前世今生（一）：不椭圆的\"椭圆\"与欧拉的加法魔法",
+        "date": "2025-12-05 18:00:00",
+        "heroImage": "content/2025-12-05/main.jpg",
+        "excerpt": "椭圆曲线的前世今生（一）：不椭圆的\"椭圆\"与欧拉的加法魔法\r在开始讨论椭圆曲线密码学之前，让我们暂时忘掉那些复杂的加密算法，忘掉 $y^2 = x^3 + ax + b$ 这个标准方程，甚至忘掉\"曲线\"这个词。今天，我们将时光倒流回微积分刚...",
+        "slug": "2025-12-05",
+        "number": 4,
+        "previous": {
+            "title": "使用DeepWiki一键生成任何代码库的AI文档",
+            "slug": "2025-09-09-deepwiki"
+        },
+        "next": null
+    },
+    {
         "title": "使用DeepWiki一键生成任何代码库的AI文档",
         "date": "2025-09-09 12:00:00",
         "heroImage": "content/2025-09-09-deepwiki/main.jpg",
-        "excerpt": "使用DeepWiki一键生成任何代码库的AI文档",
+        "excerpt": "使用DeepWiki一键生成任何代码库的AI文档\r背景简介\r在软件开发中，无论是接触一个全新的开源项目、入职后熟悉公司的庞大代码库，还是接手一个缺乏维护的旧项目，开发者面临的首要挑战就是快速理解代码的结构、逻辑和功能。传统的代码文档往往存在...",
         "slug": "2025-09-09-deepwiki",
         "number": 3,
         "previous": {
             "title": "使用MCP Inspector可视化调试MCP服务",
             "slug": "2025-09-08-use-mcp-Inspector"
         },
-        "next": null
+        "next": {
+            "title": "椭圆曲线的前世今生（一）：不椭圆的\"椭圆\"与欧拉的加法魔法",
+            "slug": "2025-12-05"
+        }
     },
     {
         "title": "使用MCP Inspector可视化调试MCP服务",
@@ -47,17 +63,33 @@ const allPosts = [
 const paginatedPosts = [
     [
         {
+            "title": "椭圆曲线的前世今生（一）：不椭圆的\"椭圆\"与欧拉的加法魔法",
+            "date": "2025-12-05 18:00:00",
+            "heroImage": "content/2025-12-05/main.jpg",
+            "excerpt": "椭圆曲线的前世今生（一）：不椭圆的\"椭圆\"与欧拉的加法魔法\r在开始讨论椭圆曲线密码学之前，让我们暂时忘掉那些复杂的加密算法，忘掉 $y^2 = x^3 + ax + b$ 这个标准方程，甚至忘掉\"曲线\"这个词。今天，我们将时光倒流回微积分刚...",
+            "slug": "2025-12-05",
+            "number": 4,
+            "previous": {
+                "title": "使用DeepWiki一键生成任何代码库的AI文档",
+                "slug": "2025-09-09-deepwiki"
+            },
+            "next": null
+        },
+        {
             "title": "使用DeepWiki一键生成任何代码库的AI文档",
             "date": "2025-09-09 12:00:00",
             "heroImage": "content/2025-09-09-deepwiki/main.jpg",
-            "excerpt": "使用DeepWiki一键生成任何代码库的AI文档",
+            "excerpt": "使用DeepWiki一键生成任何代码库的AI文档\r背景简介\r在软件开发中，无论是接触一个全新的开源项目、入职后熟悉公司的庞大代码库，还是接手一个缺乏维护的旧项目，开发者面临的首要挑战就是快速理解代码的结构、逻辑和功能。传统的代码文档往往存在...",
             "slug": "2025-09-09-deepwiki",
             "number": 3,
             "previous": {
                 "title": "使用MCP Inspector可视化调试MCP服务",
                 "slug": "2025-09-08-use-mcp-Inspector"
             },
-            "next": null
+            "next": {
+                "title": "椭圆曲线的前世今生（一）：不椭圆的\"椭圆\"与欧拉的加法魔法",
+                "slug": "2025-12-05"
+            }
         },
         {
             "title": "使用MCP Inspector可视化调试MCP服务",
